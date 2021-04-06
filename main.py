@@ -29,3 +29,31 @@ class LogicElement(Element):
         return LogicElement('↔', 2)
 
 
+class NonLogicElement(Element):
+    def __init__(self, symbol: str, arity: int):
+        super().__init__(symbol, arity)
+
+
+class Function(NonLogicElement):
+    def __init__(self, symbol: str, arity: int):
+        super().__init__(symbol, arity)
+
+
+class Constant(Function):
+    def __init__(self, symbol: str):
+        super().__init__(symbol, arity=0)
+
+
+class Predicate(NonLogicElement):
+    def __init__(self, symbol: str, arity: int):
+        super().__init__(symbol, arity)
+
+
+class Statement(Predicate):
+    def __init__(self, symbol: str):
+        super().__init__(symbol, arity=0)
+
+
+class Variable(NonLogicElement):
+    def __init__(self, symbol: str):
+        super().__init__(symbol, arity=0)
